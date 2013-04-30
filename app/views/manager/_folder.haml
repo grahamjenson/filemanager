@@ -1,0 +1,11 @@
+%ul
+  = "#{folder.name}"
+  - for f in folder[:children]
+    %li
+      - if f.type == 'folder' 
+        = render :partial => 'folder', :locals => {folder: f}
+      - else
+        - path = root_path+"#{f.path}/#{f.name}"
+        %a.btn.btn-success{href: path}
+          = "#{f.name}" 
+        = link_to("Destroy", delete_path(:path => path), :method => :post, :confirm => "Are you sure?", :class => 'btn btn-danger')
