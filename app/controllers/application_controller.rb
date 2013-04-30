@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :basic_auth
   
   def basic_auth
-    authenticate_or_request_with_http_basic("Password Please #{ENV['USER']} #{ENV['PASS']}") do |username, password|
+    authenticate_or_request_with_http_basic("Password Please") do |username, password|
       username == ENV['USER'] && password == ENV['PASS']
     end
   end
